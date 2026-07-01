@@ -159,6 +159,8 @@ const faqItems = [
   },
 ];
 
+const CHECKOUT_URL = "https://pay.kiwify.com.br/aIDnsjt";
+
 function CTA({
   children,
   variant = "primary",
@@ -170,7 +172,9 @@ function CTA({
 }) {
   return (
     <a
-      href="#oferta"
+      href={CHECKOUT_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       className={`btn-cta ${variant === "pulse" ? "btn-cta-pulse" : ""} ${className}`}
     >
       {children}
