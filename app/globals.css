@@ -197,6 +197,20 @@ body {
   .mecanismo-closing {
     @apply relative z-[1] font-serif text-lg md:text-xl text-midnight/80 italic leading-relaxed;
   }
+
+  .social-links {
+    @apply flex items-center justify-center gap-4 mb-5;
+  }
+
+  .social-link {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-full border border-midnight/10 text-midnight/70 transition-all duration-300;
+  }
+
+  .social-link:hover {
+    @apply border-gold/50 text-midnight;
+    background: rgba(197, 168, 128, 0.12);
+    transform: translateY(-2px);
+  }
 }
 
 @keyframes cta-pulse {

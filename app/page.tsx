@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductCover from "@/components/ProductCover";
 import PdfPageMockup from "@/components/PdfPageMockup";
+import SocialLinks from "@/components/SocialLinks";
 import CronogramaTimeline from "@/components/CronogramaTimeline";
 
 const reveal = {
@@ -682,7 +683,8 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="py-8 px-6 text-center border-t border-midnight/5 bg-cream">
+      <footer className="py-10 px-6 text-center border-t border-midnight/5 bg-cream">
+        <SocialLinks />
         <p className="font-sans text-gray-400 text-sm">
           © {new Date().getFullYear()} Projeto Astarte. Todos os direitos reservados.
         </p>
