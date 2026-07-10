@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductCover from "@/components/ProductCover";
 import SocialLinks from "@/components/SocialLinks";
+import {
+  buildCheckoutUrl,
+  captureTrackingParams,
+  CHECKOUT_BASE_URL,
+} from "@/lib/checkout";
 
 const reveal = {
   initial: false,
@@ -168,8 +173,6 @@ const faqItems = [
   },
 ];
 
-const CHECKOUT_URL = "https://pay.kiwify.com.br/aIDnsjt";
-
 function CTA({
   children,
   variant = "primary",
@@ -179,6 +182,13 @@ function CTA({
   variant?: "primary" | "pulse" | "sticky";
   className?: string;
 }) {
+  const [checkoutUrl, setCheckoutUrl] = useState(CHECKOUT_BASE_URL);
+
+  useEffect(() => {
+    captureTrackingParams();
+    setCheckoutUrl(buildCheckoutUrl());
+  }, []);
+
   const variantClass =
     variant === "pulse"
       ? "btn-cta-pulse"
@@ -188,10 +198,15 @@ function CTA({
 
   return (
     <a
-      href={CHECKOUT_URL}
+      href={checkoutUrl}
       target="_blank"
       rel="noopener noreferrer"
       className={`btn-cta ${variantClass} ${className}`}
+      onClick={(event) => {
+        const url = buildCheckoutUrl();
+        event.currentTarget.href = url;
+        setCheckoutUrl(url);
+      }}
     >
       {children}
     </a>
