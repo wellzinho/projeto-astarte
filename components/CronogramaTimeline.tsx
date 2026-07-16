@@ -1,6 +1,7 @@
 export interface CronogramaItem {
   days: string;
-  label: string;
+  title: string;
+  desc: string;
 }
 
 interface CronogramaTimelineProps {
@@ -9,32 +10,43 @@ interface CronogramaTimelineProps {
 
 export default function CronogramaTimeline({ items }: CronogramaTimelineProps) {
   return (
-    <ol className="relative mx-auto flex max-w-2xl flex-col items-center gap-12 md:gap-16">
-      <div
-        className="absolute left-1/2 top-8 bottom-8 w-px -translate-x-1/2 bg-gradient-to-b from-gold/10 via-gold/35 to-gold/10"
-        aria-hidden="true"
-      />
+    <>
+      <ol className="how-timeline md:hidden">
+        {items.map((item, i) => (
+          <li key={item.days} className="how-timeline-item">
+            <span className="how-timeline-number" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div className="how-timeline-content">
+              <span className="day-badge">{item.days}</span>
+              <h3 className="font-serif text-xl text-midnight leading-snug mt-3">
+                {item.title}
+              </h3>
+              <p className="text-body-muted mt-2">{item.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
 
-      {items.map((item, i) => (
-        <li
-          key={item.days}
-          className="relative flex w-full max-w-lg flex-col items-center text-center"
-        >
-          <span
-            className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full border-2 border-gold bg-white font-sans text-[11px] font-semibold tracking-wider text-gold-dark shadow-soft"
-            aria-hidden="true"
-          >
-            {String(i + 1).padStart(2, "0")}
-          </span>
-
-          <article className="mt-5 w-full rounded-2xl border border-midnight/[0.07] bg-section/70 px-7 py-6 md:px-9 md:py-8 shadow-soft">
-            <span className="day-badge">{item.days}</span>
-            <p className="font-serif text-xl md:text-[1.35rem] text-midnight mt-4 leading-snug">
-              {item.label}
-            </p>
-          </article>
-        </li>
-      ))}
-    </ol>
+      <ol className="hidden md:grid md:grid-cols-5 md:gap-4 lg:gap-5 list-none p-0 m-0">
+        {items.map((item, i) => (
+          <li key={item.days} className="flex flex-col">
+            <span
+              className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gold bg-white font-sans text-[11px] font-semibold tracking-wider text-gold-dark shadow-soft mb-4"
+              aria-hidden="true"
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <article className="premium-card !p-5 lg:!p-6 flex-1 border-midnight/[0.06]">
+              <span className="day-badge text-[10px]">{item.days}</span>
+              <h3 className="font-serif text-lg lg:text-xl text-midnight leading-snug mt-3">
+                {item.title}
+              </h3>
+              <p className="text-body-sm mt-2">{item.desc}</p>
+            </article>
+          </li>
+        ))}
+      </ol>
+    </>
   );
 }
