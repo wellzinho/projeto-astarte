@@ -4,12 +4,14 @@ const TRACKING_KEYS = [
   "utm_source",
   "utm_medium",
   "utm_campaign",
-  "utm_content",
   "utm_term",
+  "utm_content",
   "src",
   "sck",
   "s1",
   "s2",
+  "s3",
+  "fbclid",
 ] as const;
 
 type TrackingKey = (typeof TRACKING_KEYS)[number];
@@ -27,6 +29,7 @@ function isDev(): boolean {
 
 let hasLoggedCapture = false;
 let hasLoggedCheckoutUrl = false;
+let hasTrackedInitiateCheckout = false;
 
 function logDev(message: string, data?: unknown): void {
   if (!isDev()) return;
@@ -61,9 +64,11 @@ function hasTrackingParams(params: TrackingParams): boolean {
   return Object.keys(params).length > 0;
 }
 
-function readFromStorage(storage: Storage): TrackingParams {
+function readFromSessionStorage(): TrackingParams {
+  if (!isBrowser()) return {};
+
   try {
-    const raw = storage.getItem(STORAGE_KEY);
+    const raw = window.sessionStorage.getItem(STORAGE_KEY);
     if (!raw) return {};
 
     const parsed = JSON.parse(raw) as unknown;
@@ -85,30 +90,44 @@ function readFromStorage(storage: Storage): TrackingParams {
   }
 }
 
-function saveTrackingParams(params: TrackingParams): void {
+function saveToSessionStorage(params: TrackingParams): void {
   if (!isBrowser() || !hasTrackingParams(params)) return;
 
   try {
-    const serialized = JSON.stringify(params);
-    window.sessionStorage.setItem(STORAGE_KEY, serialized);
-    window.localStorage.setItem(STORAGE_KEY, serialized);
+    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(params));
   } catch {
-    // Storage may be unavailable (private mode, quota, etc.)
+    // sessionStorage may be unavailable
   }
 }
 
 /**
- * Captures tracking params from the current landing URL and persists them.
- * Safe to call only on the client.
+ * Clears legacy localStorage tracking that used to leak paid UTMs into organic visits.
+ */
+function clearLegacyLocalStorage(): void {
+  if (!isBrowser()) return;
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // ignore
+  }
+}
+
+/**
+ * Captures tracking params from the current landing URL and persists them for the session.
+ * Never invents defaults. Safe to call only on the client.
+ *
+ * Priority: current URL → sessionStorage (same browser tab/session only).
  */
 export function captureTrackingParams(): TrackingParams {
   if (!isBrowser()) return {};
 
   try {
+    clearLegacyLocalStorage();
+
     const fromUrl = pickTrackingParams(new URLSearchParams(window.location.search));
 
     if (hasTrackingParams(fromUrl)) {
-      saveTrackingParams(fromUrl);
+      saveToSessionStorage(fromUrl);
 
       if (!hasLoggedCapture) {
         hasLoggedCapture = true;
@@ -118,7 +137,7 @@ export function captureTrackingParams(): TrackingParams {
       return fromUrl;
     }
 
-    const fromSession = readFromStorage(window.sessionStorage);
+    const fromSession = readFromSessionStorage();
     if (hasTrackingParams(fromSession)) {
       if (!hasLoggedCapture) {
         hasLoggedCapture = true;
@@ -127,18 +146,9 @@ export function captureTrackingParams(): TrackingParams {
       return fromSession;
     }
 
-    const fromLocal = readFromStorage(window.localStorage);
-    if (hasTrackingParams(fromLocal)) {
-      if (!hasLoggedCapture) {
-        hasLoggedCapture = true;
-        logDev("[Astarte UTM] parâmetros recuperados do localStorage:", fromLocal);
-      }
-      return fromLocal;
-    }
-
     if (!hasLoggedCapture) {
       hasLoggedCapture = true;
-      logDev("[Astarte UTM] nenhum parâmetro de rastreamento encontrado");
+      logDev("[Astarte UTM] nenhum parâmetro de rastreamento — checkout sem UTMs");
     }
 
     return {};
@@ -149,9 +159,9 @@ export function captureTrackingParams(): TrackingParams {
 }
 
 /**
- * Builds the Kiwify checkout URL with preserved tracking params.
- * Priority: current URL → sessionStorage → localStorage.
- * Never throws; falls back to the bare checkout URL.
+ * Builds the Kiwify checkout URL with only params that exist on the landing (or session).
+ * Without tracking params, returns the bare checkout URL.
+ * Never throws.
  */
 export function buildCheckoutUrl(baseUrl: string = CHECKOUT_BASE_URL): string {
   if (!isBrowser()) return baseUrl;
@@ -164,7 +174,7 @@ export function buildCheckoutUrl(baseUrl: string = CHECKOUT_BASE_URL): string {
       const value = params[key];
       if (!value) continue;
 
-      // Do not overwrite params already present on the checkout URL
+      // Do not overwrite params already present on the checkout base URL
       if (!checkout.searchParams.has(key)) {
         checkout.searchParams.set(key, value);
       }
@@ -181,5 +191,30 @@ export function buildCheckoutUrl(baseUrl: string = CHECKOUT_BASE_URL): string {
   } catch (error) {
     logDev("[Astarte UTM] falha ao montar URL do checkout:", error);
     return baseUrl;
+  }
+}
+
+/**
+ * Fires Meta Pixel InitiateCheckout at most once per page load.
+ * Does not fire Purchase.
+ */
+export function trackInitiateCheckoutOnce(): void {
+  if (!isBrowser() || hasTrackedInitiateCheckout) return;
+
+  try {
+    const fbq = (
+      window as Window & { fbq?: (...args: unknown[]) => void }
+    ).fbq;
+
+    if (typeof fbq !== "function") return;
+
+    hasTrackedInitiateCheckout = true;
+    fbq("track", "InitiateCheckout");
+
+    if (isDev()) {
+      logDev("[Astarte Pixel] InitiateCheckout disparado uma vez");
+    }
+  } catch (error) {
+    logDev("[Astarte Pixel] falha ao disparar InitiateCheckout:", error);
   }
 }

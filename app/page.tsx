@@ -10,6 +10,7 @@ import {
   buildCheckoutUrl,
   captureTrackingParams,
   CHECKOUT_BASE_URL,
+  trackInitiateCheckoutOnce,
 } from "@/lib/checkout";
 
 const reveal = {
@@ -227,6 +228,7 @@ function CTA({
         const url = buildCheckoutUrl();
         event.currentTarget.href = url;
         setCheckoutUrl(url);
+        trackInitiateCheckoutOnce();
       }}
     >
       {children}
@@ -367,7 +369,7 @@ export default function Home() {
     <>
       {/* HERO */}
       <header id="hero" className="hero-section section-mobile !pt-5 md:!pt-12 !pb-6 md:!pb-16">
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-4 md:gap-10 lg:gap-12 md:items-center">
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] gap-5 md:gap-8 lg:gap-10 md:items-center">
           <div className="min-w-0 w-full flex flex-col justify-center order-1">
             <motion.span {...revealHero} className="hero-eyebrow">
               Projeto Astarte · Protocolo de 30 dias
@@ -405,16 +407,16 @@ export default function Home() {
           <motion.div
             {...revealHero}
             transition={{ ...revealHero.transition, delay: 0.12 }}
-            className="hero-visual order-2 mt-1 md:mt-0"
+            className="hero-visual order-2 mt-2 md:mt-0"
           >
-            <div className="hero-product-wrap relative w-[90%] max-w-[440px] md:w-full md:max-w-none mx-auto aspect-[16/10] md:aspect-[2752/1536] overflow-hidden">
+            <div className="hero-product-wrap relative w-full mx-auto aspect-[2752/1536] overflow-hidden">
               <Image
                 src="/imagens/hero2.jpeg"
                 alt="Coleção Projeto Astarte — cinco volumes e bônus com capas em azul-marinho e dourado"
                 fill
                 priority
                 quality={85}
-                sizes="(max-width: 768px) 90vw, 48vw"
+                sizes="(max-width: 768px) 100vw, 55vw"
               />
             </div>
           </motion.div>
