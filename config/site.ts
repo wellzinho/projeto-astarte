@@ -4,12 +4,14 @@ export const siteConfig = {
   priceValue: "37.90",
   priceLabel: "Pagamento único",
   productSlug: "projeto-astarte",
+  /** Checkout ativo da Kiwify — único link usado por todos os CTAs. */
   checkoutUrl: "https://pay.kiwify.com.br/aIDnsjt",
   supportUrl: "#",
   termsUrl: "#",
   privacyUrl: "#",
   purchasePolicyUrl: "#",
   contactUrl: "#",
+  /** Alias do checkoutUrl (mesmo destino). */
   kiwifyUrl: "https://pay.kiwify.com.br/aIDnsjt",
 } as const;
 

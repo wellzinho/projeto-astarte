@@ -1,4 +1,7 @@
-export const CHECKOUT_BASE_URL = "https://pay.kiwify.com.br/aIDnsjt";
+import { siteConfig } from "@/config/site";
+
+/** Única fonte da verdade do checkout Kiwify — não duplicar em outros arquivos. */
+export const CHECKOUT_BASE_URL = siteConfig.checkoutUrl;
 
 const TRACKING_KEYS = [
   "utm_source",

@@ -6,7 +6,6 @@ import { siteConfig } from "@/config/site";
 import {
   buildCheckoutUrl,
   captureTrackingParams,
-  CHECKOUT_BASE_URL,
   trackInitiateCheckoutOnce,
 } from "@/lib/checkout";
 
@@ -27,13 +26,13 @@ export default function CheckoutButton({
   className = "",
   variant = "primary",
 }: CheckoutButtonProps) {
-  const [href, setHref] = useState(CHECKOUT_BASE_URL);
+  const [href, setHref] = useState(siteConfig.checkoutUrl);
   const ctaLabel =
     label ?? (typeof children === "string" ? children : location);
 
   useEffect(() => {
     captureTrackingParams();
-    setHref(buildCheckoutUrl());
+    setHref(buildCheckoutUrl(siteConfig.checkoutUrl));
   }, []);
 
   return (
@@ -45,6 +44,7 @@ export default function CheckoutButton({
       data-cta-label={ctaLabel}
       data-product={siteConfig.productSlug}
       data-price={siteConfig.priceValue}
+      data-checkout-base={siteConfig.checkoutUrl}
       className={cn(
         "btn-astarte",
         variant === "ghost" && "btn-astarte-ghost",
@@ -52,7 +52,7 @@ export default function CheckoutButton({
         className
       )}
       onClick={(event) => {
-        const url = buildCheckoutUrl();
+        const url = buildCheckoutUrl(siteConfig.checkoutUrl);
         event.currentTarget.href = url;
         setHref(url);
         trackInitiateCheckoutOnce();
