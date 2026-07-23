@@ -16,21 +16,12 @@ export default function FinalCTA() {
   return (
     <section id="cta-final" className="section-pad sapphire-field" aria-labelledby="final-heading">
       <div className="mx-auto max-w-2xl text-center">
-        <motion.span {...reveal} className="eyebrow !text-gold-light">
-          Você pode estar afastando ele sem perceber
-        </motion.span>
-        <motion.h2 id="final-heading" {...reveal} className="headline-light mt-3">
-          Descubra o erro e conquiste esse homem.
+        <motion.h2 id="final-heading" {...reveal} className="headline-light">
+          Se você continuar fazendo a mesma coisa, ele não terá motivo para agir diferente.
         </motion.h2>
         <motion.p {...reveal} className="body-text-light mx-auto mt-4 max-w-xl">
-          O Projeto Astarte mostra por que ele se afastou, o que você pode estar fazendo de
-          errado e como fazer ele voltar a te querer.
-        </motion.p>
-        <motion.p
-          {...reveal}
-          className="mt-5 font-serif text-2xl italic leading-snug text-gold-light md:text-[1.75rem]"
-        >
-          Pare de errar com o homem que você quer.
+          Descubra o que está afastando esse homem e comece hoje o plano de 30 dias para
+          conquistar ele.
         </motion.p>
         <motion.p {...reveal} className="mt-6 font-serif text-5xl text-gold-light md:text-6xl">
           {siteConfig.price}

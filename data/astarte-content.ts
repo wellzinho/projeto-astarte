@@ -4,27 +4,15 @@ export const CTA_TEXT = "Quero conquistar ele";
 export const heroList = [
   "Descubra por que ele sumiu.",
   "Veja se existe outra mulher.",
-  "Pare de fazer o que afasta ele.",
+  "Faça ele sentir sua falta e querer se aproximar.",
   "Se torne a única opção dele.",
 ] as const;
 
 export const questionCards = [
-  {
-    title: "Ele perdeu o interesse?",
-    text: "Descubra o que fez ele esfriar e o que você pode fazer para ter ele em suas mãos.",
-  },
-  {
-    title: "Tem outra mulher?",
-    text: "Descubra se ele está escondendo alguém, dividindo a atenção ou apenas usando isso para te deixar insegura.",
-  },
-  {
-    title: "Ele ainda pensa em mim?",
-    text: "Veja como deixar ele obcecado por você.",
-  },
-  {
-    title: "Ele vai voltar?",
-    text: "Descubra o que está impedindo ele de voltar e o que você pode estar fazendo para afastar ele ainda mais.",
-  },
+  { title: "Ele perdeu o interesse?" },
+  { title: "Tem outra mulher?" },
+  { title: "Ainda pensa em você?" },
+  { title: "Vai voltar a procurar?" },
 ] as const;
 
 export const volumes = [
@@ -67,44 +55,42 @@ export const bonus = {
   coverPath: "/images/astarte/covers/botao-emergencia.webp",
 } as const;
 
+export const offerDiscoveries = [
+  "Por que ele esfria depois de demonstrar interesse",
+  "Como parar de correr atrás sem perder esse homem",
+  "Como saber quando ele está apenas te enrolando",
+  "Como mudar o jeito que ele te enxerga",
+  "Como fazer ele sentir sua falta",
+  "O que fazer quando ele voltar a procurar",
+] as const;
+
 export const offerIncludes = [
-  "Descubra por que ele sumiu",
-  "Descubra se tem outra mulher",
-  "Veja o que fez ele ficar frio",
-  "Pare de cometer os mesmos erros",
-  "Faça ele pensar em você",
-  "Faça ele sentir sua falta",
-  "Faça ele te procurar",
-  "Faça ele escolher você",
+  "5 livros do Projeto Astarte",
+  "Bônus O Botão de Emergência",
+  "Plano de 30 dias",
+  "Material digital para ler no celular",
+  "Pagamento único, sem mensalidade",
 ] as const;
 
 export const faqItems = [
   {
-    q: "Vou descobrir por que ele sumiu?",
-    a: "Sim. O material mostra os motivos mais comuns por trás do sumiço e os sinais que ajudam a descobrir o que aconteceu no seu caso.",
+    q: "Serve se nunca tivemos nada?",
+    a: "Sim. O Projeto Astarte também foi criado para quem deseja conquistar um homem que ainda não tomou uma atitude. Você verá quais comportamentos aumentam o interesse e quais fazem ele te enxergar apenas como alguém que estará sempre disponível.",
   },
   {
-    q: "Vou saber se tem outra mulher?",
-    a: "Você vai conhecer os sinais que costumam aparecer quando um homem está escondendo alguém, dividindo a atenção ou mantendo duas histórias ao mesmo tempo.",
+    q: "Serve se ele se afastou?",
+    a: "Sim. Você vai identificar o que pode ter afastado esse homem e verá como parar de repetir os mesmos erros quando ele voltar a se aproximar.",
   },
   {
-    q: "Serve quando ainda não aconteceu nada entre nós?",
-    a: "Sim. Você vai descobrir por que ele não toma atitude e o que pode fazer ele começar a olhar para você com mais vontade.",
+    q: "É material físico?",
+    a: "Não. São livros digitais enviados por e-mail após a confirmação da compra. Você pode ler pelo celular, tablet ou computador.",
   },
   {
-    q: "Serve quando ele ficou frio?",
-    a: "Sim. O material mostra o que costuma esfriar um homem e o que pode fazer o interesse voltar.",
+    q: "Existe mensalidade?",
+    a: "Não. Você paga R$ 37,90 uma única vez.",
   },
   {
-    q: "Serve quando ele se afastou?",
-    a: "Sim. Você vai descobrir o que pode estar por trás da distância e o que fazer para aumentar as chances de ele voltar a procurar.",
-  },
-  {
-    q: "Isso é um livro de mensagens prontas?",
-    a: "Não. O Projeto Astarte mostra o que pode estar afastando ele e o que fazer para conquistar esse homem.",
-  },
-  {
-    q: "Como recebo os ebooks?",
+    q: "Como recebo os e-books?",
     a: "Assim que o pagamento for confirmado, o acesso é enviado para o e-mail da compra. Todo o checkout é feito pela Kiwify.",
   },
   {

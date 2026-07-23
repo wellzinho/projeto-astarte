@@ -94,7 +94,8 @@ export default function CollectionSection() {
     <section className="section-pad bg-paper" aria-labelledby="collection-heading">
       <div className="mx-auto max-w-6xl">
         <motion.h2 id="collection-heading" {...reveal} className="headline max-w-4xl">
-          Descubra o erro e se torne a única escolha dele.
+          Seis livros. Um único objetivo:{" "}
+          <span className="italic text-gold">conquistar esse homem</span>.
         </motion.h2>
         <motion.p {...reveal} className="body-text mt-4 max-w-2xl">
           Cada livro mostra uma coisa que você precisa descobrir para fazer ele ser seu.
@@ -170,8 +171,8 @@ export default function CollectionSection() {
           {...reveal}
           className="mt-8 max-w-3xl border-l-[3px] border-gold pl-4 font-serif text-2xl leading-snug text-sapphire-deep md:text-[1.75rem]"
         >
-          Você pode estar afastando esse homem sem perceber. O Projeto Astarte ensina como você
-          ser a única opção dele.
+          Você não precisa ler tudo para depois descobrir o que fazer. O plano mostra por onde
+          começar e qual passo seguir durante os 30 dias.
         </motion.p>
       </div>
     </section>
