@@ -9,18 +9,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        midnight: "#0A1128",
-        ink: "#111111",
-        cream: "#FDFBF7",
-        section: "#F8F9FA",
+        "sapphire-deep": "#071C3D",
+        "sapphire-night": "#0B2E59",
+        "sapphire-glow": "#175A8F",
         gold: {
-          DEFAULT: "#C5A880",
-          light: "#E5BA73",
+          DEFAULT: "#C6A15B",
+          light: "#E0C68A",
           dark: "#A8895E",
         },
+        paper: "#F5F0E7",
+        warm: "#FFFDF8",
+        ink: "#111827",
+        cream: "#F5F0E7",
+        midnight: "#071C3D",
+        section: "#F8F4EC",
         sapphire: {
-          DEFAULT: "#1A365D",
-          bright: "#2B6CB0",
+          DEFAULT: "#0B2E59",
+          bright: "#175A8F",
         },
       },
       fontFamily: {
@@ -28,8 +33,9 @@ const config: Config = {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        editorial: "0 12px 40px -12px rgba(10, 17, 40, 0.15)",
-        soft: "0 4px 24px -4px rgba(10, 17, 40, 0.1)",
+        editorial: "0 18px 50px -20px rgba(7, 28, 61, 0.35)",
+        soft: "0 8px 28px -10px rgba(7, 28, 61, 0.18)",
+        glow: "0 0 40px rgba(198, 161, 91, 0.18)",
       },
     },
   },

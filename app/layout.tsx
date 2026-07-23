@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Projeto Astarte | Protocolo de 30 Dias",
+  title: "Projeto Astarte | Veja o que está afastando ele e conquiste esse homem",
   description:
-    "Protocolo científico de 30 dias para compreender o apego evitativo e recuperar o seu magnetismo emocional.",
+    "Descubra por que ele ficou frio, se tem outra mulher e o que você precisa parar de fazer para ele voltar a te procurar. R$ 37,90.",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased bg-cream text-midnight">
+      <body className="bg-paper font-sans text-ink antialiased">
         <MetaPixel />
         {children}
       </body>
