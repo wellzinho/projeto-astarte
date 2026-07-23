@@ -1,5 +1,5 @@
-export const CTA_LABEL = "QUERO CONQUISTAR ESSE HOMEM";
-export const CTA_TEXT = "Quero conquistar esse homem";
+export const CTA_LABEL = "QUERO CONQUISTAR ELE";
+export const CTA_TEXT = "Quero conquistar ele";
 
 export const heroList = [
   "Descubra por que ele sumiu.",

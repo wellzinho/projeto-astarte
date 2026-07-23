@@ -28,11 +28,11 @@ export default function FinalCTA() {
         </motion.p>
         <motion.p
           {...reveal}
-          className="mt-5 font-serif text-xl italic text-gold-light md:text-2xl"
+          className="mt-5 font-serif text-2xl italic leading-snug text-gold-light md:text-[1.75rem]"
         >
           Pare de errar com o homem que você quer.
         </motion.p>
-        <motion.p {...reveal} className="mt-6 font-serif text-4xl text-gold-light md:text-5xl">
+        <motion.p {...reveal} className="mt-6 font-serif text-5xl text-gold-light md:text-6xl">
           {siteConfig.price}
         </motion.p>
         <motion.div {...reveal} className="mt-6 flex flex-col items-center gap-2">
@@ -43,7 +43,7 @@ export default function FinalCTA() {
           >
             {CTA_TEXT}
           </CheckoutButton>
-          <p className="font-sans text-[12px] text-warm/50">
+          <p className="micro-text-light">
             Compra única • Pagamento seguro • Coleção completa
           </p>
         </motion.div>

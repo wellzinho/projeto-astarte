@@ -33,10 +33,12 @@ export default function QuestionsSection() {
               transition={{ ...reveal.transition, delay: i * 0.04 }}
               className="rounded-2xl border border-sapphire-deep/10 bg-paper p-5 shadow-soft md:p-6"
             >
-              <h3 className="font-serif text-2xl leading-snug text-sapphire-deep md:text-[1.65rem]">
+              <h3 className="font-serif text-[1.65rem] leading-snug text-sapphire-deep md:text-2xl">
                 {card.title}
               </h3>
-              <p className="mt-3 font-sans text-[15px] leading-relaxed text-ink/80">{card.text}</p>
+              <p className="mt-3 font-sans text-[16px] leading-relaxed text-ink/85 md:text-[17px]">
+                {card.text}
+              </p>
             </motion.article>
           ))}
         </div>
@@ -45,7 +47,7 @@ export default function QuestionsSection() {
           {...reveal}
           className="mt-8 rounded-2xl border border-gold/35 bg-sapphire-deep px-5 py-8 text-center md:px-10 md:py-10"
         >
-          <p className="mx-auto max-w-3xl font-serif text-2xl leading-snug text-warm md:text-3xl">
+          <p className="mx-auto max-w-3xl font-serif text-[1.65rem] leading-snug text-warm md:text-3xl">
             Veja o que você está fazendo de errado, pare de afastar ele e aprenda como{" "}
             <span className="italic text-gold-light">conquistar esse homem</span>.
           </p>

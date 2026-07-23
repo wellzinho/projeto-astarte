@@ -30,15 +30,15 @@ export default function OfferSection() {
           </motion.p>
           <motion.p
             {...reveal}
-            className="mt-5 border-l-[3px] border-gold pl-4 font-serif text-xl text-gold-light md:text-2xl"
+            className="mt-5 border-l-[3px] border-gold pl-4 font-serif text-2xl leading-snug text-gold-light md:text-[1.75rem]"
           >
             Pare de afastar ele sem perceber.
           </motion.p>
 
           <motion.ul {...reveal} className="mt-6 flex flex-col gap-2.5">
             {offerIncludes.map((item) => (
-              <li key={item} className="flex items-start gap-2.5 body-text-light text-[15px]">
-                <span className="text-gold-light" aria-hidden="true">
+              <li key={item} className="flex items-start gap-2.5 body-text-light">
+                <span className="mt-0.5 text-gold-light" aria-hidden="true">
                   ✓
                 </span>
                 {item}
@@ -58,7 +58,7 @@ export default function OfferSection() {
             >
               {CTA_TEXT}
             </CheckoutButton>
-            <p className="font-sans text-[12px] text-warm/50">
+            <p className="micro-text-light">
               Compra única • Pagamento seguro • Coleção completa
             </p>
           </motion.div>

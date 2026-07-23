@@ -150,7 +150,7 @@ export default function SocialProofCarousel() {
               </button>
             </div>
           </div>
-          <p className="mt-2 px-1 font-sans text-xs text-ink/40 md:px-12" aria-live="polite">
+          <p className="mt-2 px-1 font-sans text-sm text-ink/55 md:px-12" aria-live="polite">
             {index + 1} de {proofs.length}
           </p>
         </div>

@@ -47,13 +47,15 @@ function CollectionCard({
         futurePath={item.coverPath}
         className="!rounded-xl"
       />
-      <p className="mt-3 font-sans text-[10px] uppercase tracking-[0.16em] text-gold">
+      <p className="mt-3 font-sans text-xs uppercase tracking-[0.16em] text-gold">
         {item.number}
       </p>
-      <h3 className="mt-1 font-serif text-base leading-snug text-sapphire-deep md:text-lg">
+      <h3 className="mt-1 font-serif text-lg leading-snug text-sapphire-deep md:text-xl">
         {item.title}
       </h3>
-      <p className="mt-2 font-sans text-[13px] leading-relaxed text-ink/75">{item.promise}</p>
+      <p className="mt-2 font-sans text-[15px] leading-relaxed text-ink/80 md:text-base">
+        {item.promise}
+      </p>
     </article>
   );
 }
@@ -146,7 +148,7 @@ export default function CollectionSection() {
               </button>
             </div>
           </div>
-          <p className="mt-2 px-1 font-sans text-xs text-ink/40" aria-live="polite">
+          <p className="mt-2 px-1 font-sans text-sm text-ink/55" aria-live="polite">
             {index + 1} de {collection.length}
           </p>
         </div>
@@ -166,7 +168,7 @@ export default function CollectionSection() {
 
         <motion.p
           {...reveal}
-          className="mt-8 max-w-3xl border-l-[3px] border-gold pl-4 font-serif text-xl text-sapphire-deep md:text-2xl"
+          className="mt-8 max-w-3xl border-l-[3px] border-gold pl-4 font-serif text-2xl leading-snug text-sapphire-deep md:text-[1.75rem]"
         >
           Você pode estar afastando esse homem sem perceber. O Projeto Astarte ensina como você
           ser a única opção dele.

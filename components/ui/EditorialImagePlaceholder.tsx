@@ -56,10 +56,10 @@ export default function EditorialImagePlaceholder({
         aria-hidden="true"
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-5 text-center">
-        <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-gold-light/90">
+        <span className="font-sans text-xs uppercase tracking-[0.2em] text-gold-light/90">
           {label}
         </span>
-        <span className="max-w-[15rem] font-serif text-sm leading-snug text-warm/85 md:text-base">
+        <span className="max-w-[15rem] font-serif text-base leading-snug text-warm/90 md:text-lg">
           {description}
         </span>
       </div>

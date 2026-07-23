@@ -32,7 +32,7 @@ export default function FAQSection() {
                   className="flex min-h-[56px] w-full items-center justify-between gap-4 py-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
                   aria-expanded={isOpen}
                 >
-                  <span className="pr-4 font-serif text-lg tracking-tight text-sapphire-deep md:text-xl">
+                  <span className="pr-4 font-serif text-xl tracking-tight text-sapphire-deep md:text-[1.35rem]">
                     {item.q}
                   </span>
                   <motion.span
@@ -53,7 +53,7 @@ export default function FAQSection() {
                       transition={{ duration: 0.25 }}
                       className="overflow-hidden"
                     >
-                      <p className="body-text pb-5 text-[15px]">{item.a}</p>
+                      <p className="body-text pb-5">{item.a}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
