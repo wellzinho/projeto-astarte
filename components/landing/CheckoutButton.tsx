@@ -26,7 +26,7 @@ export default function CheckoutButton({
   className = "",
   variant = "primary",
 }: CheckoutButtonProps) {
-  const [href, setHref] = useState(siteConfig.checkoutUrl);
+  const [href, setHref] = useState<string>(siteConfig.checkoutUrl);
   const ctaLabel =
     label ?? (typeof children === "string" ? children : location);
 
