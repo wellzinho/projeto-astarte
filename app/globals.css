@@ -23,12 +23,14 @@ html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
   background-color: var(--paper);
   color: var(--ink);
-  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100vw;
   font-size: 1.0625rem; /* 17px base — corpo legível WCAG */
   line-height: 1.65;
 }
@@ -48,49 +50,57 @@ body {
 }
 
 @layer utilities {
+  /* Base mobile → escala em sm/md/lg */
   .section-pad {
-    @apply w-full px-5 py-10 sm:px-6 md:px-12 md:py-14 lg:py-16;
+    @apply w-full max-w-[100vw] overflow-x-clip px-4 py-6 sm:px-6 sm:py-8 md:px-12 md:py-11 lg:py-12;
   }
 
   .section-pad-tight {
-    @apply w-full px-5 py-10 sm:px-6 md:px-12 md:py-14;
+    @apply w-full px-4 py-6 sm:px-6 sm:py-8 md:px-12 md:py-12;
   }
 
-  /* Eyebrow: mínimo legível com tracking; ≥12px (WCAG não exige, mas UI recomendado) */
   .eyebrow {
-    @apply inline-flex items-center gap-3 font-sans text-xs md:text-[13px] uppercase tracking-[0.2em] text-gold;
+    @apply inline-flex items-center gap-2.5 font-sans text-[13px] md:text-[13px] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-gold;
   }
 
   .eyebrow::before {
     content: "";
-    @apply block h-px w-7 bg-gradient-to-r from-gold to-gold-light;
+    @apply block h-px w-5 sm:w-7 bg-gradient-to-r from-gold to-gold-light;
   }
 
-  /* Hierarquia de título: mobile generoso, desktop heroico */
+  /* Headlines: cabem em 375px sem quebrar a hierarquia */
   .headline {
-    @apply font-serif text-[2.15rem] leading-[1.15] tracking-tight text-sapphire-deep sm:text-[2.5rem] md:text-[2.85rem] lg:text-[3.25rem];
+    @apply font-serif text-[1.85rem] leading-[1.16] tracking-tight text-sapphire-deep sm:text-[2.25rem] md:text-[2.85rem] lg:text-[3.25rem];
   }
 
   .headline-light {
-    @apply font-serif text-[2.15rem] leading-[1.15] tracking-tight text-warm sm:text-[2.5rem] md:text-[2.85rem] lg:text-[3.25rem];
+    @apply font-serif text-[1.85rem] leading-[1.16] tracking-tight text-warm sm:text-[2.25rem] md:text-[2.85rem] lg:text-[3.25rem];
   }
 
   /* Corpo: ≥16px WCAG; line-height ≥1.5 */
   .body-text {
-    @apply font-sans text-[17px] md:text-[18px] leading-[1.65] text-ink/85;
+    @apply font-sans text-[16px] sm:text-[17px] md:text-[18px] leading-[1.65] text-ink/85;
   }
 
   .body-text-light {
-    @apply font-sans text-[17px] md:text-[18px] leading-[1.65] text-warm/85;
+    @apply font-sans text-[16px] sm:text-[17px] md:text-[18px] leading-[1.65] text-warm/85;
   }
 
-  /* Microcopy secundária legível (≥14px) */
+  /* ≥16px no mobile (legibilidade); levemente menor no desktop */
   .micro-text {
-    @apply font-sans text-sm md:text-[15px] leading-relaxed tracking-wide text-ink/60;
+    @apply font-sans text-[16px] md:text-[15px] leading-relaxed tracking-wide text-ink/60;
   }
 
   .micro-text-light {
-    @apply font-sans text-sm md:text-[15px] leading-relaxed tracking-wide text-warm/65;
+    @apply font-sans text-[16px] md:text-[15px] leading-relaxed tracking-wide text-warm/65;
+  }
+
+  .quote-editorial {
+    @apply font-serif text-[1.35rem] leading-snug text-sapphire-deep sm:text-2xl md:text-[1.75rem];
+  }
+
+  .quote-editorial-light {
+    @apply font-serif text-[1.35rem] leading-snug text-warm sm:text-2xl md:text-[1.75rem];
   }
 
   .gold-line {
@@ -119,12 +129,30 @@ body {
   }
 
   .mobile-sticky-pad {
-    @apply pb-24 md:pb-0;
+    @apply pb-[5.5rem] md:pb-0;
+  }
+
+  /* Hero full-bleed: gradientes de legibilidade sobre a imagem */
+  .hero-overlay-desktop {
+    /* Overlay lateral: texto sobre creme ≥ AA; tablet permanece à direita */
+    background: linear-gradient(
+      90deg,
+      #f5f0e7 0%,
+      rgba(245, 240, 231, 0.97) 28%,
+      rgba(245, 240, 231, 0.72) 48%,
+      rgba(245, 240, 231, 0.2) 68%,
+      transparent 82%
+    );
+  }
+
+  .hero-overlay-mobile {
+    /* Mantido por compatibilidade; mobile usa painel sólido em HeroSection */
+    background: #f5f0e7;
   }
 }
 
 .btn-astarte {
-  @apply inline-flex min-h-[56px] w-full items-center justify-center rounded-xl px-7 py-3.5 font-sans text-base font-semibold uppercase tracking-wider transition-all duration-300 md:w-auto md:text-[17px];
+  @apply inline-flex min-h-[52px] w-full items-center justify-center rounded-xl px-5 py-3.5 font-sans text-[15px] font-semibold uppercase tracking-wider transition-all duration-300 sm:min-h-[56px] sm:px-7 sm:text-base md:w-auto md:text-[17px];
   background: linear-gradient(135deg, var(--gold-light), var(--gold));
   color: var(--sapphire-deep);
 }
@@ -154,31 +182,48 @@ body {
   box-shadow: none;
 }
 
+/* Variante para fundos claros: navy sólido, hover dourado */
+.btn-astarte-navy {
+  background: var(--sapphire-deep);
+  color: var(--warm);
+}
+
+.btn-astarte-navy:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--sapphire-deep);
+  box-shadow: 0 12px 32px rgba(7, 28, 61, 0.25);
+}
+
+.btn-astarte-navy:focus-visible {
+  outline: 2px solid var(--sapphire-deep);
+  outline-offset: 3px;
+}
+
 .btn-astarte-sticky {
   @apply min-h-[52px] w-auto flex-1 px-4 text-sm tracking-wide;
 }
 
 .sticky-cta-mobile {
-  @apply fixed bottom-0 left-0 right-0 z-50 border-t border-gold/20 px-4 pt-3 md:hidden;
-  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  @apply fixed bottom-0 left-0 right-0 z-50 border-t border-gold/20 px-3 pt-2.5 sm:px-4 sm:pt-3 md:hidden;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
   background: rgba(7, 28, 61, 0.96);
   backdrop-filter: blur(12px);
 }
 
 .sticky-cta-inner {
-  @apply flex items-center gap-3;
+  @apply flex items-center gap-2.5 sm:gap-3;
 }
 
 .sticky-cta-copy {
-  @apply min-w-[92px] flex-shrink-0;
+  @apply min-w-0 max-w-[42%] shrink sm:max-w-none sm:min-w-[110px] sm:shrink-0;
 }
 
 .sticky-cta-label {
-  @apply font-sans text-xs uppercase tracking-wider text-warm/70;
+  @apply truncate font-sans text-[10px] uppercase tracking-wider text-warm/70 sm:text-xs;
 }
 
 .sticky-cta-price {
-  @apply font-serif text-xl leading-tight text-gold-light;
+  @apply font-serif text-lg leading-tight text-gold-light sm:text-xl;
 }
 
 .gold-divider {

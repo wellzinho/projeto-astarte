@@ -3,17 +3,21 @@
 ## Estrutura da página
 
 1. Hero
-2. Identificação rápida
-3. Como funciona (3 etapas)
-4. Conteúdo da coleção
-5. Prova social
-6. Oferta
-7. FAQ
-8. Fechamento
-9. Rodapé
+2. Reconhecimento
+3. Problema invisível
+4. Apresentação do Método Astarte
+5. Cinco movimentos da reconquista
+6. Transformação
+7. Prova social (preservada, sem alterações)
+8. Oferta completa
+9. Para quem é / para quem não é
+10. FAQ
+11. Fechamento
+12. Footer
+13. Barra fixa mobile
 
-Promessa única: **Conquiste esse homem em 30 dias.**  
-CTA único: **QUERO CONQUISTAR ESSE HOMEM**
+Promessa única: **Método de 30 dias para reconquistar o homem que se afastou.**  
+CTAs: **QUERO COMEÇAR MINHA RECONQUISTA** (principal) · **QUERO COMEÇAR OS 30 DIAS** (intermediário) · **COMEÇAR AGORA** (barra fixa mobile)
 
 ## Checkout e links
 

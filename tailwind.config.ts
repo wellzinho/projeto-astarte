@@ -16,6 +16,8 @@ const config: Config = {
           DEFAULT: "#C6A15B",
           light: "#E0C68A",
           dark: "#A8895E",
+          /** Dourado profundo para texto sobre fundos claros (contraste AA em títulos). */
+          deep: "#8F6B2D",
         },
         paper: "#F5F0E7",
         warm: "#FFFDF8",

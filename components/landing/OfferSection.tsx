@@ -1,97 +1,101 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
-  CTA_LABEL,
-  CTA_TEXT,
-  offerDiscoveries,
-  offerIncludes,
+  CTA_MAIN_LABEL,
+  guaranteeText,
+  guaranteeTitle,
+  offerCardName,
+  offerCardSubname,
+  offerEyebrow,
+  offerItems,
+  offerSubtitle,
+  offerTitle,
 } from "@/data/astarte-content";
-import { siteConfig } from "@/config/site";
 import CheckoutButton from "./CheckoutButton";
+import TrustLine from "./TrustLine";
 
 const reveal = {
-  initial: { opacity: 1, y: 10 },
+  initial: { opacity: 1, y: 8 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-40px" },
-  transition: { duration: 0.4 },
+  transition: { duration: 0.35 },
 };
 
 export default function OfferSection() {
   return (
-    <section id="oferta" className="section-pad sapphire-field" aria-labelledby="offer-heading">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
-        <div>
-          <motion.h2 id="offer-heading" {...reveal} className="headline-light">
-            Pare de tentar no escuro. Veja onde você está errando e comece a{" "}
-            <span className="italic text-gold-light">conquistar esse homem</span>.
-          </motion.h2>
+    <section
+      id="oferta"
+      className="section-pad sapphire-field"
+      aria-labelledby="offer-heading"
+      data-analytics-section="offer_section"
+    >
+      <div className="mx-auto max-w-3xl">
+        <motion.p {...reveal} className="eyebrow !text-gold-light mx-auto">
+          {offerEyebrow}
+        </motion.p>
 
-          <motion.div {...reveal} className="mt-7">
-            <p className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-gold-light">
-              O que você vai descobrir
-            </p>
-            <ul className="mt-3 flex flex-col gap-2.5">
-              {offerDiscoveries.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 body-text-light">
-                  <span className="mt-0.5 text-gold-light" aria-hidden="true">
-                    ✓
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+        <motion.h2
+          id="offer-heading"
+          {...reveal}
+          className="headline-light mx-auto mt-3 max-w-2xl text-center"
+        >
+          {offerTitle}
+        </motion.h2>
 
-          <motion.div {...reveal} className="mt-7">
-            <p className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-gold-light">
-              O que você recebe
-            </p>
-            <ul className="mt-3 flex flex-col gap-2.5">
-              {offerIncludes.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 body-text-light">
-                  <span className="mt-0.5 text-gold-light" aria-hidden="true">
-                    ✓
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+        <motion.p {...reveal} className="body-text-light mx-auto mt-4 max-w-xl text-center">
+          {offerSubtitle}
+        </motion.p>
 
-          <motion.div {...reveal} className="mt-7">
-            <p className="font-sans text-sm uppercase tracking-[0.12em] text-gold-light/80">
-              Tudo por
-            </p>
-            <p className="mt-1 font-serif text-5xl text-gold-light md:text-6xl">
-              {siteConfig.price}
-            </p>
-          </motion.div>
+        <motion.div
+          {...reveal}
+          className="mx-auto mt-7 max-w-xl rounded-3xl border border-gold/50 bg-sapphire-deep/70 px-5 py-7 text-center shadow-editorial md:mt-9 md:px-10 md:py-9"
+        >
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold-light">
+            {offerCardName}
+          </p>
+          <p className="mt-1 font-serif text-2xl leading-snug text-warm md:text-[1.75rem]">
+            {offerCardSubname}
+          </p>
 
-          <motion.div {...reveal} className="mt-6 flex flex-col gap-2">
+          <div className="gold-divider mx-auto mt-5 max-w-[160px]" aria-hidden="true" />
+
+          <ul className="mx-auto mt-5 flex max-w-xs flex-col gap-2 text-left">
+            {offerItems.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 body-text-light">
+                <span className="mt-0.5 text-gold-light" aria-hidden="true">
+                  ✓
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-6 font-serif text-6xl leading-none text-gold-light md:text-7xl">
+            R$ 37,90
+          </p>
+          <p className="mt-2 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-gold-light/80">
+            Pagamento único
+          </p>
+
+          <div className="mt-5 flex flex-col items-center gap-2.5">
             <CheckoutButton
               location="offer"
-              label={CTA_LABEL}
-              className="min-h-[56px] w-full md:w-auto md:min-w-[320px]"
+              label={CTA_MAIN_LABEL}
+              className="min-h-[56px] w-full md:min-w-[320px]"
             >
-              {CTA_TEXT}
+              {CTA_MAIN_LABEL}
             </CheckoutButton>
-            <p className="micro-text-light">Pagamento único. Sem mensalidade.</p>
-          </motion.div>
-        </div>
+            <TrustLine tone="dark" />
+          </div>
 
-        <motion.div {...reveal}>
-          <div className="relative overflow-hidden rounded-2xl border border-gold/30 bg-gradient-to-br from-ink via-sapphire-deep to-sapphire-night shadow-editorial">
-            <div className="relative aspect-[3/4] w-full">
-              <Image
-                src="/imagens/body2.jpeg"
-                alt="Projeto Astarte — composição com todos os volumes e o bônus"
-                fill
-                sizes="(max-width: 768px) 100vw, 40vw"
-                className="rounded-2xl object-cover object-center"
-              />
-            </div>
+          <div className="mt-5 rounded-2xl border border-gold/35 bg-sapphire-night/45 px-4 py-4 text-left md:px-5">
+            <p className="font-serif text-lg leading-snug text-gold-light md:text-xl">
+              {guaranteeTitle}
+            </p>
+            <p className="mt-2 font-sans text-[15px] leading-relaxed text-warm/80 md:text-[14px]">
+              {guaranteeText}
+            </p>
           </div>
         </motion.div>
       </div>

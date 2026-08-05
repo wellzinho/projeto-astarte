@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import MetaPixel from "@/components/MetaPixel";
 import "./globals.css";
@@ -17,9 +17,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Projeto Astarte | Veja o que está afastando ele e conquiste esse homem",
+  title: "30 Dias para Reconquistar o Homem que Você Ama | Projeto Astarte",
   description:
-    "Descubra por que ele ficou frio, se tem outra mulher e o que você precisa parar de fazer para ele voltar a te procurar. R$ 37,90.",
+    "Receba um método digital dividido em cinco etapas e siga uma orientação por dia para entender por que ele se afastou, fazer ele sentir sua falta e reconquistar o interesse dele.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#071c3d",
 };
 
 export default function RootLayout({

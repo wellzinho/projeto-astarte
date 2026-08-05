@@ -8,15 +8,23 @@ import {
   captureTrackingParams,
   trackInitiateCheckoutOnce,
 } from "@/lib/checkout";
+import { trackEvent } from "@/lib/analytics";
 
-export type CtaLocation = "hero" | "social-proof" | "offer" | "final";
+export type CtaLocation =
+  | "hero"
+  | "interest"
+  | "plan"
+  | "receive"
+  | "offer"
+  | "final"
+  | "sticky";
 
 interface CheckoutButtonProps {
   children: React.ReactNode;
   location: CtaLocation;
   label?: string;
   className?: string;
-  variant?: "primary" | "ghost" | "sticky";
+  variant?: "primary" | "ghost" | "sticky" | "navy";
 }
 
 export default function CheckoutButton({
@@ -49,6 +57,7 @@ export default function CheckoutButton({
         "btn-astarte",
         variant === "ghost" && "btn-astarte-ghost",
         variant === "sticky" && "btn-astarte-sticky",
+        variant === "navy" && "btn-astarte-navy",
         className
       )}
       onClick={(event) => {
@@ -56,6 +65,13 @@ export default function CheckoutButton({
         event.currentTarget.href = url;
         setHref(url);
         trackInitiateCheckoutOnce();
+        if (location === "hero") {
+          trackEvent("hero_cta_click", { cta_label: ctaLabel });
+        }
+        trackEvent("checkout_click", {
+          cta_position: location,
+          cta_label: ctaLabel,
+        });
       }}
     >
       {children}
