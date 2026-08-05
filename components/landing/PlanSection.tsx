@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   CTA_METHOD_LABEL,
@@ -62,6 +63,21 @@ export default function PlanSection() {
             </motion.li>
           ))}
         </ol>
+
+        <motion.figure {...reveal} className="mt-7 md:mt-8">
+          <div className="relative w-full overflow-hidden rounded-2xl border border-gold/40 shadow-editorial">
+            <div className="relative aspect-[16/9] w-full bg-sapphire-night">
+              <Image
+                src="/imagens/body2.png"
+                alt="Mockup do Método Astarte — o livro 30 Dias para Reconquistar o Homem que Você Ama ao lado do volume 1 aberto em um tablet"
+                fill
+                loading="lazy"
+                sizes="(max-width: 768px) 92vw, 768px"
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
+        </motion.figure>
 
         <motion.p {...reveal} className="body-text mt-6 max-w-xl font-medium text-sapphire-deep">
           {methodClosing}
