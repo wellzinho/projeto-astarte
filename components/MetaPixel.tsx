@@ -2,6 +2,11 @@ import Script from "next/script";
 
 const META_PIXEL_ID = "1648078539613617";
 
+/**
+ * Única instalação do Meta Pixel no Projeto Astarte.
+ * PageView + ViewContent no carregamento. Purchase e InitiateCheckout
+ * ficam sob responsabilidade exclusiva da Kiwify.
+ */
 export default function MetaPixel() {
   return (
     <>
@@ -17,6 +22,13 @@ export default function MetaPixel() {
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', '${META_PIXEL_ID}');
           fbq('track', 'PageView');
+          fbq('track', 'ViewContent', {
+            content_name: 'Método Astarte',
+            content_ids: ['metodo-astarte'],
+            content_type: 'product',
+            value: 37.90,
+            currency: 'BRL'
+          });
         `}
       </Script>
       <noscript>

@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 import {
   buildCheckoutUrl,
   captureTrackingParams,
-  trackInitiateCheckoutOnce,
+  trackCheckoutClick,
 } from "@/lib/checkout";
 import { trackEvent } from "@/lib/analytics";
 
@@ -64,7 +64,7 @@ export default function CheckoutButton({
         const url = buildCheckoutUrl(siteConfig.checkoutUrl);
         event.currentTarget.href = url;
         setHref(url);
-        trackInitiateCheckoutOnce();
+        trackCheckoutClick(location);
         if (location === "hero") {
           trackEvent("hero_cta_click", { cta_label: ctaLabel });
         }

@@ -32,7 +32,6 @@ function isDev(): boolean {
 
 let hasLoggedCapture = false;
 let hasLoggedCheckoutUrl = false;
-let hasTrackedInitiateCheckout = false;
 
 function logDev(message: string, data?: unknown): void {
   if (!isDev()) return;
@@ -198,11 +197,12 @@ export function buildCheckoutUrl(baseUrl: string = CHECKOUT_BASE_URL): string {
 }
 
 /**
- * Fires Meta Pixel InitiateCheckout at most once per page load.
- * Does not fire Purchase.
+ * Dispara o evento personalizado CheckoutClick no Meta Pixel.
+ * Não dispara InitiateCheckout nem Purchase — esses ficam na Kiwify.
+ * Nunca lança erro: falha no Pixel não pode bloquear o checkout.
  */
-export function trackInitiateCheckoutOnce(): void {
-  if (!isBrowser() || hasTrackedInitiateCheckout) return;
+export function trackCheckoutClick(ctaPosition: string): void {
+  if (!isBrowser()) return;
 
   try {
     const fbq = (
@@ -211,13 +211,19 @@ export function trackInitiateCheckoutOnce(): void {
 
     if (typeof fbq !== "function") return;
 
-    hasTrackedInitiateCheckout = true;
-    fbq("track", "InitiateCheckout");
+    fbq("trackCustom", "CheckoutClick", {
+      content_name: "Método Astarte",
+      content_ids: ["metodo-astarte"],
+      content_type: "product",
+      value: 37.90,
+      currency: "BRL",
+      cta_position: ctaPosition,
+    });
 
     if (isDev()) {
-      logDev("[Astarte Pixel] InitiateCheckout disparado uma vez");
+      logDev("[Astarte Pixel] CheckoutClick", { cta_position: ctaPosition });
     }
   } catch (error) {
-    logDev("[Astarte Pixel] falha ao disparar InitiateCheckout:", error);
+    logDev("[Astarte Pixel] falha ao disparar CheckoutClick:", error);
   }
 }
