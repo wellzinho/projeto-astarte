@@ -7,18 +7,18 @@
 /* ---------------------------------------------------------------- CTAs */
 
 export const CTA_MAIN_LABEL = "QUERO ELE DE VOLTA";
-export const CTA_METHOD_LABEL = "QUERO COMEÇAR MINHA RECONQUISTA";
-export const CTA_STICKY_TEXT = "Quero ele de volta";
+export const CTA_METHOD_LABEL = "QUERO ELE DE VOLTA";
+export const CTA_STICKY_TEXT = "QUERO ELE DE VOLTA";
 
 /* ---------------------------------------------------------------- Hero */
 
 export const heroEyebrow = "30 dias para reconquistar o homem que você ama";
 
 export const heroTitle =
-  "Você ainda quer esse homem? Aprenda a reconquistar ele em 30 dias.";
+  "Você ainda quer esse homem? Aprenda como ter ele de volta em 30 dias.";
 
 export const heroSubtitle =
-  "O Método Astarte mostra, passo a passo, como recuperar o interesse, o desejo e a vontade dele de estar com você novamente.";
+  "O Método Astarte reúne tudo o que você precisa para viver os próximos 30 dias com um único objetivo: despertar novamente o interesse, o desejo e a vontade dele de estar com você.";
 
 export const heroProductLine = "5 volumes digitais + bônus Hipnose da Reconquista";
 
@@ -33,7 +33,7 @@ export const principleTitle =
   "Se é esse homem que você quer, não deixe o tempo transformar essa história em passado.";
 
 export const principleText =
-  "Durante 30 dias, você vai seguir um passo a passo criado para recuperar o interesse dele e aumentar suas chances de viver essa história novamente.";
+  "Durante 30 dias, tudo no Método Astarte foi criado com um único objetivo: fazer ele voltar a olhar para você com interesse, desejo e vontade de viver essa história novamente.";
 
 export const principleHighlight =
   "O objetivo é um só: reconquistar o homem que você ama.";
@@ -46,12 +46,15 @@ export type VolumeItem = {
 };
 
 export const methodVolumes: readonly VolumeItem[] = [
-  { volume: "Volume 1", title: "Entenda por que ele se afastou" },
+  { volume: "Volume 1", title: "Descubra o que fez ele mudar com você" },
   { volume: "Volume 2", title: "Faça ele sentir sua falta" },
   { volume: "Volume 3", title: "Faça ele voltar a te procurar" },
   { volume: "Volume 4", title: "Reconquiste o interesse dele" },
   { volume: "Volume 5", title: "Faça ele querer ficar" },
 ] as const;
+
+export const methodIntro =
+  "Leia os volumes na ordem e viva cada parte da reconquista até chegar mais perto do que você realmente quer: ter esse homem de volta.";
 
 export const methodClosing =
   "Do primeiro ao último volume, tudo foi criado para aproximar você de um único resultado: ter esse homem de volta.";
@@ -71,14 +74,14 @@ export const desireClosing =
 /* --------------------------------------------------------- O que recebe */
 
 export const receiveList = [
-  "Entenda por que ele se afastou",
+  "Descubra o que fez ele mudar com você",
   "Faça ele sentir sua falta",
   "Faça ele voltar a te procurar",
   "Reconquiste o interesse dele",
   "Faça ele querer ficar",
   "Bônus: Hipnose da Reconquista",
   "Os cinco volumes em e-book",
-  "Passo a passo para seguir durante 30 dias",
+  "Método completo para os seus 30 dias de reconquista",
   "Leitura pelo celular, tablet ou computador",
   "Pagamento único",
 ] as const;
@@ -86,7 +89,7 @@ export const receiveList = [
 export const bonusLabel = "Bônus especial";
 export const bonusTitle = "Hipnose da Reconquista";
 export const bonusText =
-  "Um material especial para ajudar você a usar presença, palavras e emoção para voltar a ocupar a mente desse homem durante a reconquista.";
+  "Um material especial para fortalecer sua confiança, sua presença e fazer ele pensar em você de outro jeito durante os 30 dias.";
 
 export const receiveMicrocopy =
   "Os materiais são enviados depois da confirmação do pagamento.";
@@ -99,7 +102,7 @@ export const offerTitle =
   "Se você ainda quer esse homem, comece agora a reconquistar ele.";
 
 export const offerSubtitle =
-  "Tenha o Método Astarte completo e siga o passo a passo dos próximos 30 dias.";
+  "Tenha o Método Astarte completo e comece hoje os seus 30 dias para reconquistar o homem que você ama.";
 
 export const offerCardName = "Método Astarte";
 export const offerCardSubname = "30 Dias para Reconquistar o Homem que Você Ama";
@@ -107,7 +110,7 @@ export const offerCardSubname = "30 Dias para Reconquistar o Homem que Você Ama
 export const offerItems = [
   "5 volumes digitais em e-book",
   "Bônus Hipnose da Reconquista",
-  "Passo a passo de 30 dias",
+  "Método completo de 30 dias",
   "Pagamento único",
   "7 dias de garantia",
 ] as const;
@@ -138,21 +141,21 @@ export const faqItems: readonly FaqItem[] = [
     ],
   },
   {
-    q: "E se ele não estiver falando comigo?",
+    q: "E se hoje a gente não estiver junto?",
     a: [
-      "Você não precisa começar mandando mensagem. O plano mostra o que fazer antes de procurar ele e conduz você, passo a passo, até o momento certo de retomar o contato.",
+      "Você pode começar mesmo assim. O Método Astarte foi criado para a mulher que ainda acredita nessa história e quer ter esse homem de volta.",
     ],
   },
   {
     q: "Ele vai voltar em 30 dias?",
     a: [
-      "Os 30 dias são o período do passo a passo. Cada história tem seu próprio tempo, mas durante esse período você deixa de agir no escuro e passa a seguir uma direção pensada para reconstruir o interesse dele.",
+      "Os 30 dias são o período do Método Astarte. Cada história é diferente, mas esse é o tempo em que você vai colocar o método em prática para mudar o rumo dessa relação e se aproximar do resultado que deseja.",
     ],
   },
   {
     q: "O que eu recebo?",
     a: [
-      "Você recebe os cinco volumes do Método Astarte, o bônus Hipnose da Reconquista e um plano completo para seguir durante 30 dias.",
+      "Você recebe os cinco volumes do Método Astarte, o bônus Hipnose da Reconquista e o método completo de 30 dias.",
     ],
   },
   {
@@ -164,7 +167,7 @@ export const faqItems: readonly FaqItem[] = [
   {
     q: "O que é a Hipnose da Reconquista?",
     a: [
-      "É um exercício guiado para você se preparar antes de falar ou agir e não colocar sua reconquista a perder por impulso.",
+      "É um exercício guiado para ajudar você a se sentir mais segura, confiante e preparada durante os 30 dias da sua reconquista.",
     ],
   },
   {
@@ -188,7 +191,7 @@ export const finalEyebrow = "A sua reconquista começa agora";
 export const finalTitle = "Dê a essa história uma nova chance.";
 
 export const finalSubtitle =
-  "Comece hoje o Método Astarte e siga o passo a passo para aumentar suas chances de ter esse homem de volta.";
+  "Comece hoje o Método Astarte e viva os próximos 30 dias com um único objetivo: reconquistar o homem que você ama.";
 
 export const finalPriceLine = "R$ 37,90 • pagamento único";
 

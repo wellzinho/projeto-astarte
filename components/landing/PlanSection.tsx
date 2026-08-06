@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   CTA_METHOD_LABEL,
   methodClosing,
+  methodIntro,
   methodVolumes,
 } from "@/data/astarte-content";
 import CheckoutButton from "./CheckoutButton";
@@ -30,13 +31,12 @@ export default function PlanSection() {
         </motion.p>
 
         <motion.h2 id="method-heading" {...reveal} className="headline mt-3 max-w-2xl">
-          Os cinco volumes que formam o seu{" "}
-          <span className="italic text-gold">passo a passo de reconquista</span>.
+          Os cinco volumes para reconquistar{" "}
+          <span className="italic text-gold">o homem que você ama</span> em 30 dias.
         </motion.h2>
 
         <motion.p {...reveal} className="body-text mt-4 max-w-xl">
-          Você recebe o método completo e segue os volumes na ordem durante os próximos 30
-          dias.
+          {methodIntro}
         </motion.p>
 
         <ol className="mt-7 flex flex-col gap-3 md:mt-8 md:gap-3.5">
