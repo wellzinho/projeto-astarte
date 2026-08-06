@@ -23,7 +23,7 @@ export const heroSubtitle =
 export const heroProductLine = "5 volumes digitais + bônus Hipnose da Reconquista";
 
 export const heroMicrocopy =
-  "Pagamento protegido pela Kiwify • pagamento único • PDFs enviados após a confirmação • 7 dias de garantia";
+  "Pagamento protegido pela Kiwify • pagamento único • e-books enviados após a confirmação • 7 dias de garantia";
 
 /* -------------------------------------------------- Princípio Astarte */
 
@@ -77,7 +77,7 @@ export const receiveList = [
   "Reconquiste o interesse dele",
   "Faça ele querer ficar",
   "Bônus: Hipnose da Reconquista",
-  "Os cinco volumes em PDF",
+  "Os cinco volumes em e-book",
   "Passo a passo para seguir durante 30 dias",
   "Leitura pelo celular, tablet ou computador",
   "Pagamento único",
@@ -105,7 +105,7 @@ export const offerCardName = "Método Astarte";
 export const offerCardSubname = "30 Dias para Reconquistar o Homem que Você Ama";
 
 export const offerItems = [
-  "5 volumes digitais em PDF",
+  "5 volumes digitais em e-book",
   "Bônus Hipnose da Reconquista",
   "Passo a passo de 30 dias",
   "Pagamento único",
@@ -113,10 +113,10 @@ export const offerItems = [
 ] as const;
 
 export const offerMicrocopy =
-  "Pagamento protegido pela Kiwify • pagamento único • PDFs enviados após a confirmação • 7 dias de garantia";
+  "Pagamento protegido pela Kiwify • pagamento único • e-books enviados após a confirmação • 7 dias de garantia";
 
 export const trustLineText =
-  "Pagamento protegido pela Kiwify • pagamento único • PDFs enviados após a confirmação • 7 dias de garantia";
+  "Pagamento protegido pela Kiwify • pagamento único • e-books enviados após a confirmação • 7 dias de garantia";
 
 export const guaranteeTitle = "Você tem 7 dias para decidir";
 
@@ -134,7 +134,7 @@ export const faqItems: readonly FaqItem[] = [
   {
     q: "Esse método é para mim?",
     a: [
-      "Se vocês já viveram uma história e ele se afastou, sim. O Método Astarte foi feito para a mulher que ainda quer esse homem e precisa saber o que fazer agora para reconquistá-lo.",
+      "O Método Astarte foi feito para a mulher que ainda quer esse homem e precisa saber o que fazer agora para reconquistá-lo.",
     ],
   },
   {
@@ -158,13 +158,13 @@ export const faqItems: readonly FaqItem[] = [
   {
     q: "Como eu recebo os materiais?",
     a: [
-      "Depois da confirmação do pagamento, a Kiwify envia as instruções para o seu e-mail. Os volumes são em PDF e podem ser lidos pelo celular, tablet ou computador.",
+      "Depois da confirmação do pagamento, a Kiwify envia as instruções para o seu e-mail. Os volumes são e-books e podem ser lidos pelo celular, tablet ou computador.",
     ],
   },
   {
     q: "O que é a Hipnose da Reconquista?",
     a: [
-      "É um exercício guiado para você se preparar antes de falar ou agir e não colocar sua reconquista a perder por impulso. Não é controle mental e não age sobre ele.",
+      "É um exercício guiado para você se preparar antes de falar ou agir e não colocar sua reconquista a perder por impulso.",
     ],
   },
   {
