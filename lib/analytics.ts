@@ -16,9 +16,7 @@ function baseParams(): EventParams {
   if (typeof window === "undefined") return {};
   let utmContent: string | undefined;
   try {
-    const raw =
-      sessionStorage.getItem("astarte_tracking_params") ??
-      localStorage.getItem("astarte_tracking_params");
+    const raw = sessionStorage.getItem("astarte_tracking_params");
     if (raw) utmContent = (JSON.parse(raw) as Record<string, string>).utm_content;
   } catch {
     // storage indisponível (Safari em modo privado, etc.)

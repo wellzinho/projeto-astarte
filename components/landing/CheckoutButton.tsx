@@ -27,6 +27,10 @@ interface CheckoutButtonProps {
   variant?: "primary" | "ghost" | "sticky" | "navy";
 }
 
+/**
+ * CTA de compra: SSR/hidratação usam a URL base limpa.
+ * No cliente, useEffect e onClick anexam UTMs via buildCheckoutUrl.
+ */
 export default function CheckoutButton({
   children,
   location,

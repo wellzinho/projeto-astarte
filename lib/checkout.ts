@@ -3,14 +3,18 @@ import { siteConfig } from "@/config/site";
 /** Única fonte da verdade do checkout Kiwify — não duplicar em outros arquivos. */
 export const CHECKOUT_BASE_URL = siteConfig.checkoutUrl;
 
+/**
+ * Parâmetros de rastreamento propagados da landing para o checkout Kiwify.
+ * `fbclid` é preservado além da lista pedida (Meta Ads).
+ */
 const TRACKING_KEYS = [
+  "src",
+  "sck",
   "utm_source",
   "utm_medium",
   "utm_campaign",
   "utm_term",
   "utm_content",
-  "src",
-  "sck",
   "s1",
   "s2",
   "s3",
@@ -18,7 +22,7 @@ const TRACKING_KEYS = [
 ] as const;
 
 type TrackingKey = (typeof TRACKING_KEYS)[number];
-type TrackingParams = Partial<Record<TrackingKey, string>>;
+export type TrackingParams = Partial<Record<TrackingKey, string>>;
 
 const STORAGE_KEY = "astarte_tracking_params";
 
@@ -98,12 +102,12 @@ function saveToSessionStorage(params: TrackingParams): void {
   try {
     window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(params));
   } catch {
-    // sessionStorage may be unavailable
+    // sessionStorage pode estar indisponível (modo privado, etc.)
   }
 }
 
 /**
- * Clears legacy localStorage tracking that used to leak paid UTMs into organic visits.
+ * Remove cópia antiga em localStorage que vazava UTMs pagos para visitas orgânicas.
  */
 function clearLegacyLocalStorage(): void {
   if (!isBrowser()) return;
@@ -115,10 +119,11 @@ function clearLegacyLocalStorage(): void {
 }
 
 /**
- * Captures tracking params from the current landing URL and persists them for the session.
- * Never invents defaults. Safe to call only on the client.
+ * Captura parâmetros da URL da landing e persiste em sessionStorage pela sessão.
+ * Seguro apenas no cliente (nunca chamar durante SSR).
  *
- * Priority: current URL → sessionStorage (same browser tab/session only).
+ * Prioridade: valores da URL atual sobrescrevem a sessão; demais chaves da sessão permanecem.
+ * Sem parâmetros na URL e sem sessão → objeto vazio.
  */
 export function captureTrackingParams(): TrackingParams {
   if (!isBrowser()) return {};
@@ -127,33 +132,25 @@ export function captureTrackingParams(): TrackingParams {
     clearLegacyLocalStorage();
 
     const fromUrl = pickTrackingParams(new URLSearchParams(window.location.search));
+    const fromSession = readFromSessionStorage();
+
+    // URL ganha nas chaves presentes; o restante da sessão é preservado.
+    const merged: TrackingParams = { ...fromSession, ...fromUrl };
 
     if (hasTrackingParams(fromUrl)) {
-      saveToSessionStorage(fromUrl);
-
-      if (!hasLoggedCapture) {
-        hasLoggedCapture = true;
-        logDev("[Astarte UTM] parâmetros capturados na landing page:", fromUrl);
-      }
-
-      return fromUrl;
-    }
-
-    const fromSession = readFromSessionStorage();
-    if (hasTrackingParams(fromSession)) {
-      if (!hasLoggedCapture) {
-        hasLoggedCapture = true;
-        logDev("[Astarte UTM] parâmetros recuperados do sessionStorage:", fromSession);
-      }
-      return fromSession;
+      saveToSessionStorage(merged);
     }
 
     if (!hasLoggedCapture) {
       hasLoggedCapture = true;
-      logDev("[Astarte UTM] nenhum parâmetro de rastreamento — checkout sem UTMs");
+      if (hasTrackingParams(merged)) {
+        logDev("[Astarte UTM] parâmetros ativos:", merged);
+      } else {
+        logDev("[Astarte UTM] nenhum parâmetro de rastreamento — checkout sem UTMs");
+      }
     }
 
-    return {};
+    return hasTrackingParams(merged) ? merged : {};
   } catch (error) {
     logDev("[Astarte UTM] falha ao capturar parâmetros:", error);
     return {};
@@ -161,9 +158,11 @@ export function captureTrackingParams(): TrackingParams {
 }
 
 /**
- * Builds the Kiwify checkout URL with only params that exist on the landing (or session).
- * Without tracking params, returns the bare checkout URL.
- * Never throws.
+ * Monta a URL do checkout Kiwify com os parâmetros capturados.
+ * Usa `URL` / `URLSearchParams` para montar `?` e `&` corretamente.
+ * Não sobrescreve parâmetros que já existam no link base.
+ * Sem UTMs, devolve exatamente a URL base.
+ * Nunca lança erro.
  */
 export function buildCheckoutUrl(baseUrl: string = CHECKOUT_BASE_URL): string {
   if (!isBrowser()) return baseUrl;
@@ -176,7 +175,6 @@ export function buildCheckoutUrl(baseUrl: string = CHECKOUT_BASE_URL): string {
       const value = params[key];
       if (!value) continue;
 
-      // Do not overwrite params already present on the checkout base URL
       if (!checkout.searchParams.has(key)) {
         checkout.searchParams.set(key, value);
       }

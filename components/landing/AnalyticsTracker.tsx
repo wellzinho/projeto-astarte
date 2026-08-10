@@ -2,15 +2,18 @@
 
 import { useEffect } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { captureTrackingParams } from "@/lib/checkout";
 
 const SCROLL_MARKS = [25, 50, 75, 90] as const;
 
 /**
  * Eventos de página: page_view, visualização de seções marcadas com
  * data-analytics-section e profundidade de scroll (25/50/75/90).
+ * Também captura UTMs no carregamento (cliente) para o checkout Kiwify.
  */
 export default function AnalyticsTracker() {
   useEffect(() => {
+    captureTrackingParams();
     trackEvent("page_view");
 
     const seenSections = new Set<string>();
