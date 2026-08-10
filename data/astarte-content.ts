@@ -1,5 +1,5 @@
 /**
- * Copy central do Projeto Astarte.
+ * Copy central do Método Astarte.
  * Promessa única: reconquistar o homem que ela ama em 30 dias.
  * Uma dor, uma promessa — sem narrativas paralelas.
  */

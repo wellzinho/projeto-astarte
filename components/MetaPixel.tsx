@@ -3,7 +3,7 @@ import Script from "next/script";
 const META_PIXEL_ID = "1648078539613617";
 
 /**
- * Única instalação do Meta Pixel no Projeto Astarte.
+ * Única instalação do Meta Pixel no Método Astarte.
  * PageView + ViewContent no carregamento. Purchase e InitiateCheckout
  * ficam sob responsabilidade exclusiva da Kiwify.
  */

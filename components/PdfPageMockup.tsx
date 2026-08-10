@@ -80,7 +80,7 @@ export default function PdfPageMockup({
         <div className="mt-5 pt-4 border-t border-midnight/5 flex items-center gap-2">
           <span className="w-5 h-px bg-gold/50" />
           <span className="font-sans text-[10px] uppercase tracking-widest text-gray-400">
-            Projeto Astarte
+            Método Astarte
           </span>
         </div>
       </div>

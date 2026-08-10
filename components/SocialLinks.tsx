@@ -30,7 +30,7 @@ export default function SocialLinks() {
           href={social.href}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Siga o Projeto Astarte no ${social.name}`}
+          aria-label={`Siga o Método Astarte no ${social.name}`}
           className="social-link"
         >
           {social.icon}

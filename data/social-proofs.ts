@@ -1,5 +1,5 @@
 /**
- * Depoimentos reais de clientes do Projeto Astarte.
+ * Depoimentos reais de clientes do Método Astarte.
  *
  * Regras de publicação:
  * - Renderizar somente quando authorized: true && published: true.
@@ -90,7 +90,7 @@ export const reviews: Review[] = [
     photoAlt: "Retrato ilustrativo — Patrícia M.",
     photoConfirmed: false,
     quote:
-      "O Projeto Astarte fez ele ficar louco por mim. Eu parei de correr atrás e, de repente, era ele quem queria minha atenção o tempo todo.",
+      "O Método Astarte fez ele ficar louco por mim. Eu parei de correr atrás e, de repente, era ele quem queria minha atenção o tempo todo.",
     date: "fev/2026",
     purchaseConfirmed: false,
     authorized: true,
@@ -152,7 +152,7 @@ export const reviews: Review[] = [
     photoAlt: "Retrato ilustrativo — Amanda T.",
     photoConfirmed: false,
     quote:
-      "Parecia impossível. Depois do Projeto Astarte, a dinâmica mudou: ele me procura, valoriza e não quer me perder de jeito nenhum.",
+      "Parecia impossível. Depois do Método Astarte, a dinâmica mudou: ele me procura, valoriza e não quer me perder de jeito nenhum.",
     date: "ago/2025",
     purchaseConfirmed: false,
     authorized: true,
@@ -168,7 +168,7 @@ export const reviews: Review[] = [
     photoAlt: "Retrato ilustrativo — Camila S.",
     photoConfirmed: false,
     quote:
-      "O Projeto Astarte me ajudou a entender por que correr atrás dele estava piorando tudo. Quando comecei a aplicar o método, parei de agir por impulso e mudei completamente a forma como me posicionava. Depois de semanas sem conversar, ele voltou a me procurar. Mesmo antes disso, eu já estava muito mais segura e no controle da situação.",
+      "O Método Astarte me ajudou a entender por que correr atrás dele estava piorando tudo. Quando comecei a aplicar o método, parei de agir por impulso e mudei completamente a forma como me posicionava. Depois de semanas sem conversar, ele voltou a me procurar. Mesmo antes disso, eu já estava muito mais segura e no controle da situação.",
     date: "jul/2026",
     purchaseConfirmed: false,
     authorized: true,
@@ -213,7 +213,7 @@ export const reviews: Review[] = [
     photoAlt: "Retrato ilustrativo — Patrícia L.",
     photoConfirmed: false,
     quote:
-      "Já tinha comprado outros materiais, mas sempre terminava com mais dúvidas. No Projeto Astarte encontrei orientações claras para cada fase. Entendi quando ficar em silêncio, como agir quando ele aparecesse e quais erros poderiam afastá-lo novamente. Ele voltou a falar comigo e, dessa vez, eu soube conduzir a situação sem me desesperar.",
+      "Já tinha comprado outros materiais, mas sempre terminava com mais dúvidas. No Método Astarte encontrei orientações claras para cada fase. Entendi quando ficar em silêncio, como agir quando ele aparecesse e quais erros poderiam afastá-lo novamente. Ele voltou a falar comigo e, dessa vez, eu soube conduzir a situação sem me desesperar.",
     date: "jul/2026",
     purchaseConfirmed: false,
     authorized: true,

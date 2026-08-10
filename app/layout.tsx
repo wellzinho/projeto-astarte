@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "30 Dias para Reconquistar o Homem que Você Ama | Projeto Astarte",
+  title: "30 Dias para Reconquistar o Homem que Você Ama | Método Astarte",
   description:
     "Receba um método digital dividido em cinco etapas e siga uma orientação por dia para entender por que ele se afastou, fazer ele sentir sua falta e reconquistar o interesse dele.",
 };
