@@ -4,6 +4,8 @@ import { cn } from "@/lib/cn";
 interface TrustLineProps {
   /** `light` = seções claras; `dark` = seções azuis / card de oferta. */
   tone?: "light" | "dark";
+  /** Texto alternativo — usa a linha padrão quando omitido. */
+  text?: string;
   className?: string;
 }
 
@@ -11,7 +13,7 @@ interface TrustLineProps {
  * Linha de confiança reutilizável sob CTAs.
  * Sem selos falsos, sem logos externos, sem ícones de bibliotecas.
  */
-export default function TrustLine({ tone = "light", className }: TrustLineProps) {
+export default function TrustLine({ tone = "light", text, className }: TrustLineProps) {
   return (
     <p
       className={cn(
@@ -20,7 +22,7 @@ export default function TrustLine({ tone = "light", className }: TrustLineProps)
         className
       )}
     >
-      {trustLineText}
+      {text ?? trustLineText}
     </p>
   );
 }

@@ -213,7 +213,7 @@ export function trackCheckoutClick(ctaPosition: string): void {
       content_name: "Método Astarte",
       content_ids: ["metodo-astarte"],
       content_type: "product",
-      value: 37.90,
+      value: Number(siteConfig.priceValue),
       currency: "BRL",
       cta_position: ctaPosition,
     });

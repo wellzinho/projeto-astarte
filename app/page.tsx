@@ -1,76 +1,110 @@
+import PromoBar from "@/components/landing/PromoBar";
 import HeroSection from "@/components/landing/HeroSection";
 import ReviewGroup from "@/components/landing/ReviewGroup";
-import InterestSection from "@/components/landing/InterestSection";
-import PlanSection from "@/components/landing/PlanSection";
+import ErrorSection from "@/components/landing/ErrorSection";
 import DesireSection from "@/components/landing/DesireSection";
+import MethodSection from "@/components/landing/MethodSection";
+import InterestSection from "@/components/landing/InterestSection";
+import AuthoritySection from "@/components/landing/AuthoritySection";
+import PlanSection from "@/components/landing/PlanSection";
+import ProofSection from "@/components/landing/ProofSection";
 import ReceiveSection from "@/components/landing/ReceiveSection";
 import OfferSection from "@/components/landing/OfferSection";
-import FAQSection from "@/components/landing/FAQSection";
+import GuaranteeSection from "@/components/landing/GuaranteeSection";
+import ScarcitySection from "@/components/landing/ScarcitySection";
+import PathsSection from "@/components/landing/PathsSection";
 import FinalCTA from "@/components/landing/FinalCTA";
+import FAQSection from "@/components/landing/FAQSection";
 import SiteFooter from "@/components/landing/SiteFooter";
 import MobileStickyCTA from "@/components/landing/MobileStickyCTA";
 import AnalyticsTracker from "@/components/landing/AnalyticsTracker";
+import { pricing, siteConfig } from "@/config/site";
+
+/** Dados estruturados do produto — preço atual do lote (29.90 enquanto ativo). */
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: siteConfig.productName,
+  description: siteConfig.productDescription,
+  brand: { "@type": "Brand", name: siteConfig.brand },
+  offers: {
+    "@type": "Offer",
+    price: pricing.priceValue,
+    priceCurrency: "BRL",
+    availability: "https://schema.org/InStock",
+    url: siteConfig.checkoutUrl,
+  },
+};
 
 export default function Home() {
   return (
     <>
-      {/* 1 — Hero */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+
+      {/* 1 — Barra superior do lote */}
+      <PromoBar />
+
+      {/* 2 — Hero (grande promessa) */}
       <HeroSection />
+
       <main className="w-full max-w-[100vw] overflow-x-clip mobile-sticky-pad">
-        {/* 2 — Primeira prova social */}
-        <section className="section-pad bg-warm !py-6 md:!py-9" aria-label="Depoimentos de clientes">
+        {/* Prova imediata abaixo do hero */}
+        <section
+          className="section-pad bg-warm !py-6 md:!py-9"
+          aria-label="Depoimentos reais de reconciliação"
+        >
           <div className="mx-auto w-full max-w-6xl min-w-0">
             <ReviewGroup
               group={1}
-              eyebrow="Mulheres que também começaram a reconquista."
+              eyebrow="Elas seguiram o método e tiveram ele de volta."
             />
           </div>
         </section>
 
-        {/* 3 — Princípio Astarte */}
-        <InterestSection />
+        {/* 3 — O erro que mata o desejo */}
+        <ErrorSection />
 
-        {/* 4 — Método / cinco volumes */}
-        <PlanSection />
-
-        {/* 5 — Desejo */}
+        {/* 4 — O que você quer que ele sinta */}
         <DesireSection />
 
-        {/* 6 — Segunda prova social */}
-        <section className="section-pad bg-warm" aria-labelledby="proof-mid-heading">
-          <div className="mx-auto w-full max-w-6xl min-w-0">
-            <ReviewGroup
-              group={2}
-              columns={2}
-              heading="Elas também queriam ter ele de volta."
-              subheading="Veja os relatos de mulheres que decidiram começar a reconquista."
-            />
-          </div>
-        </section>
+        {/* 5 — O que é o Método Astarte */}
+        <MethodSection />
 
-        {/* 7 — Conteúdo da oferta */}
+        {/* 6 — O Princípio Astarte */}
+        <InterestSection />
+
+        {/* 7 — Por que confiar (só renderiza com dados reais preenchidos) */}
+        <AuthoritySection />
+
+        {/* 8 — Os 30 dias: cinco movimentos */}
+        <PlanSection />
+
+        {/* 9 — Provas: números + depoimentos */}
+        <ProofSection />
+
+        {/* 10 — O que ela recebe */}
         <ReceiveSection />
 
-        {/* 8 — Terceira prova social */}
-        <section className="section-pad bg-warm !pb-0" aria-label="Mais depoimentos de clientes">
-          <div className="mx-auto w-full max-w-6xl min-w-0">
-            <ReviewGroup
-              group={3}
-              carousel
-              heading="Quando a reconquista deixa de ser apenas uma esperança."
-              subheading="Resultados e experiências de mulheres que começaram o Método Astarte."
-            />
-          </div>
-        </section>
-
-        {/* 9 — Oferta principal */}
+        {/* 11 — Justificativa do preço + oferta */}
         <OfferSection />
 
-        {/* 10 — FAQ */}
-        <FAQSection />
+        {/* 12 — Garantia */}
+        <GuaranteeSection />
 
-        {/* 11 — CTA final */}
+        {/* 13 — Escassez real */}
+        <ScarcitySection />
+
+        {/* 14 — Os três caminhos */}
+        <PathsSection />
+
+        {/* 15 — Fechamento emocional */}
         <FinalCTA />
+
+        {/* FAQ */}
+        <FAQSection />
       </main>
       <SiteFooter />
       <MobileStickyCTA />

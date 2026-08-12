@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { pricing } from "@/config/site";
 
 const META_PIXEL_ID = "1648078539613617";
 
@@ -25,7 +26,7 @@ export default function MetaPixel() {
           content_name: 'Método Astarte',
           content_ids: ['metodo-astarte'],
           content_type: 'product',
-          value: 37.90,
+          value: ${pricing.priceValue},
           currency: 'BRL'
         });
       `}

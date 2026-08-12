@@ -12,10 +12,11 @@ import { trackEvent } from "@/lib/analytics";
 
 export type CtaLocation =
   | "hero"
-  | "interest"
-  | "plan"
-  | "receive"
+  | "method"
+  | "proof"
   | "offer"
+  | "guarantee"
+  | "scarcity"
   | "final"
   | "sticky";
 
